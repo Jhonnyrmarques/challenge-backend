@@ -20,7 +20,7 @@ export class UserProfileUseCase {
 		const user = await this.usersRepository.findUserById(userId)
 
 		if(!user) {
-			throw new NotFoundError()
+			throw new NotFoundError('User')
 		}
 
 		return {
