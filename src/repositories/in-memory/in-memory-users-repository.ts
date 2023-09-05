@@ -1,11 +1,11 @@
 import { Prisma, User } from '@prisma/client'
 import { randomUUID } from 'crypto'
-
-import { UserRegistrationRepository } from '../user-registration-repository'
 import dayjs from 'dayjs'
 
+import { UsersRepository } from '../users-repository'
 
-export class InMemoryUserRegistrationRepository implements UserRegistrationRepository {
+
+export class InMemoryUsersRepository implements UsersRepository {
 	public users: User[] = []
 
 	async create(data: Prisma.UserCreateInput) {
@@ -28,6 +28,16 @@ export class InMemoryUserRegistrationRepository implements UserRegistrationRepos
 
 	async findByEmail(email: string) {
 		const user = this.users.find(user => user.email === email)
+
+		if(!user) {
+			return null
+		}
+
+		return user
+	}
+
+	async findUserById(id: string) {
+		const user = this.users.find(user => user.id === id)
 
 		if(!user) {
 			return null
