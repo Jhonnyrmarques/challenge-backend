@@ -45,4 +45,16 @@ export class InMemoryUsersRepository implements UsersRepository {
 
 		return user
 	}
+
+	async updateUser(data: Prisma.UserUpdateInput) {
+		const index = this.users.findIndex(user => user.id === data.id)
+
+		if(index >= 0) {
+			if(data.first_name) {
+				this.users[index].first_name = data.first_name.toString()
+			}
+		}
+		
+	}
+	
 }
