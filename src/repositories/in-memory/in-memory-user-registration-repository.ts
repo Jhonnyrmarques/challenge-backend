@@ -2,6 +2,7 @@ import { Prisma, User } from '@prisma/client'
 import { randomUUID } from 'crypto'
 
 import { UserRegistrationRepository } from '../user-registration-repository'
+import dayjs from 'dayjs'
 
 
 export class InMemoryUserRegistrationRepository implements UserRegistrationRepository {
@@ -15,7 +16,7 @@ export class InMemoryUserRegistrationRepository implements UserRegistrationRepos
 			document: data.document,
 			email: data.email,
 			phone_number: data.phone_number,
-			birth_date: new Date(),
+			birth_date: dayjs(data.birth_date).toDate(),
 			created_at: new Date(),
 			updated_at: null
 		}
