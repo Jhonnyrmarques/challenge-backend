@@ -2,8 +2,11 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
 import { UserRegistrationUseCase } from '../../usecases/user-registration'
-import { PrismaUserRegistrationRepository } from '../../repositories/prisma/prisma-user-registration-repository'
+
+import { PrismaUsersRepository } from '../../repositories/prisma/prisma-users-repository'
+
 import { UserAlreadyExistsError } from '../../usecases/errors/user-already-exists-error'
+
 
 export async function userRegistration(request: FastifyRequest, reply: FastifyReply) {
 	// valida os dados das requisições que estão vindo do body
@@ -25,7 +28,7 @@ export async function userRegistration(request: FastifyRequest, reply: FastifyRe
 		birth_date
 	} = userRegisterBodySchema.parse(request.body)
 
-	const prismaUserRegistrationRepository = new PrismaUserRegistrationRepository()
+	const prismaUserRegistrationRepository = new PrismaUsersRepository()
 	const userRegistrationUseCase = new UserRegistrationUseCase(prismaUserRegistrationRepository)
 
 	try{
