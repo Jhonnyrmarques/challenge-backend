@@ -1,9 +1,10 @@
+import { User } from '@prisma/client'
 import { hash } from 'bcryptjs'
 import dayjs from 'dayjs'
 
-import { UserRegistrationRepository } from '../repositories/user-registration-repository'
+import { UsersRepository } from '../repositories/users-repository'
+
 import { UserAlreadyExistsError } from './errors/user-already-exists-error'
-import { User } from '@prisma/client'
 
 
 interface IRequest {
@@ -20,10 +21,10 @@ interface IResponse {
 }
 
 export class UserRegistrationUseCase {
-	constructor(private userRegistrationRepository: UserRegistrationRepository) {}
+	constructor(private usersRepository: UsersRepository) {}
 
 	async execute({first_name, last_name, document, email, phone_number, birth_date}: IRequest): Promise<IResponse> {
-		const emailAlreadyExists = await this.userRegistrationRepository.findByEmail(email)
+		const emailAlreadyExists = await this.usersRepository.findByEmail(email)
 
 		const document_hash = await hash(document, 6)
 
@@ -31,7 +32,7 @@ export class UserRegistrationUseCase {
 			throw new UserAlreadyExistsError()
 		}
 
-		const user = await this.userRegistrationRepository.create({
+		const user = await this.usersRepository.create({
 			first_name,
 			last_name,
 			document: document_hash,
