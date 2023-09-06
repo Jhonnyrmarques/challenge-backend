@@ -23,5 +23,24 @@ export class InMemoryOrdersRepository implements OrdersRepository {
 
 		return order
 	}
+
+	async	updateOrder(data: Prisma.OrderUncheckedUpdateInput) {
+		const index = this.orders.findIndex(order => order.id === data.id)
+		
+		if(index >= 0) {
+
+			if(data.description){
+				this.orders[index].description = data.description.toString()
+			}
+
+			if(data.price) {
+				this.orders[index].price = new Decimal(data.price.toString())
+			}
+
+			if(data.quantity){
+				this.orders[index].quantity = new Decimal(data.quantity.toString())
+			}
+		}
+	}
   
 }
