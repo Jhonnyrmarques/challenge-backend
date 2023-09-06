@@ -62,5 +62,9 @@ export class InMemoryUsersRepository implements UsersRepository {
 		delete this.users[index]
 		
 	}
+
+	async listAllUsers() {
+		return this.users
+	}
 	
 }
