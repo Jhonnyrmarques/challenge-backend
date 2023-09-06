@@ -5,4 +5,5 @@ export interface OrdersRepository {
   updateOrder(data: Prisma.OrderUncheckedUpdateInput): Promise<void>
   findById(id: string): Promise<Order | null>
   listAllOrders(): Promise<Order[]>
+  deleteOrder(id: string): Promise<void>
 }
