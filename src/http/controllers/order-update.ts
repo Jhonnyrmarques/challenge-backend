@@ -11,9 +11,9 @@ import { NotFoundError } from '../../usecases/errors/not-found-error'
 export async function orderUpdate(request: FastifyRequest, reply: FastifyReply) {
 
 	const orderUpdateBodySchema = z.object({
-		description: z.string(),
-		quantity: z.number(),
-		price: z.number(),
+		description: z.string().optional(),
+		quantity: z.number().optional(),
+		price: z.number().optional(),
 	})
 
 	const ordeIdParamSchema = z.object({
