@@ -39,8 +39,6 @@ describe('Order registration', () => {
 			user_id: user.id
 		})
 
-		console.log(order)
-
 		expect(order.id).toEqual(expect.any(String))
 	})
 
