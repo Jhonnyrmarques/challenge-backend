@@ -1,8 +1,7 @@
 import { Order } from '@prisma/client'
 
-import { OrdersRepository } from '../repositories/orders-repository'
-
-import { NotFoundError } from './errors/not-found-error'
+import { OrdersRepository } from '../../repositories/orders-repository'
+import { NotFoundError } from '../errors/not-found-error'
 
 
 interface IRequest {
