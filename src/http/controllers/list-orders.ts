@@ -1,7 +1,8 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 
-import { ListOrdersUseCase } from '../../usecases/list-orders'
+
 import { PrismaOrdersRepository } from '../../repositories/prisma/prisma-orders-repository'
+import { ListOrdersUseCase } from '../../usecases/orders/list-orders'
 
 
 export async function listOrders(request: FastifyRequest, reply: FastifyReply) {
