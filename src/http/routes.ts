@@ -8,6 +8,7 @@ import { userDelete } from './controllers/user-delete'
 
 import { orderRegistration } from './controllers/order-registration'
 import { orderUpdate } from './controllers/order-update'
+import { listOrders } from './controllers/list-orders'
 
 
 export async function appRoutes(app: FastifyInstance) {
@@ -18,5 +19,6 @@ export async function appRoutes(app: FastifyInstance) {
 	app.delete('/users/:id', userDelete)
 
 	app.post('/orders', orderRegistration)
+	app.get('/orders', listOrders)
 	app.put('/orders/:id', orderUpdate)
 }   
