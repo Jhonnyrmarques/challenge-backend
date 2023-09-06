@@ -1,6 +1,7 @@
-import { OrdersRepository } from '../repositories/orders-repository'
+import { OrdersRepository } from '../../repositories/orders-repository'
 
-import { NotFoundError } from './errors/not-found-error'
+import { NotFoundError } from '../errors/not-found-error'
+
 
 interface IRequest {
   orderId: string
