@@ -56,5 +56,10 @@ export class InMemoryOrdersRepository implements OrdersRepository {
 	async listAllOrders(){
 		return this.orders
 	}
+
+	async deleteOrder(id: string) {
+		const index = this.orders.findIndex(order => order.id === id)
+		delete this.orders[index]
+	}
   
 }
