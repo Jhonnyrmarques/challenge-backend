@@ -2,9 +2,10 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
 import { PrismaOrdersRepository } from '../../repositories/prisma/prisma-orders-repository'
-import { OrderProfileUseCase } from '../../usecases/order-profile'
+
 
 import { NotFoundError } from '../../usecases/errors/not-found-error'
+import { OrderProfileUseCase } from '../../usecases/orders/order-profile'
 
 
 export async function orderProfile(request: FastifyRequest, reply: FastifyReply) {
