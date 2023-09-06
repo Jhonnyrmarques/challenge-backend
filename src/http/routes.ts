@@ -11,6 +11,10 @@ import { orderUpdate } from './controllers/order-update'
 import { listOrders } from './controllers/list-orders'
 import { orderProfile } from './controllers/order-profile'
 import { orderDelete } from './controllers/order-delete'
+import { authenticate } from './controllers/authenticate'
+import { profile } from './controllers/profile'
+import { verifyJWT } from './middlewares/verify-jwt'
+
 
 
 export async function appRoutes(app: FastifyInstance) {
@@ -25,4 +29,7 @@ export async function appRoutes(app: FastifyInstance) {
 	app.put('/orders/:id', orderUpdate)
 	app.get('/orders/:id', orderProfile)
 	app.delete('/orders/:id', orderDelete)
+
+	app.post('/sessions', authenticate)
+	app.get('/me', {onRequest: [verifyJWT]}, profile)
 }   
