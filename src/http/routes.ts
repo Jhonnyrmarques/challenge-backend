@@ -10,6 +10,7 @@ import { orderRegistration } from './controllers/order-registration'
 import { orderUpdate } from './controllers/order-update'
 import { listOrders } from './controllers/list-orders'
 import { orderProfile } from './controllers/order-profile'
+import { orderDelete } from './controllers/order-delete'
 
 
 export async function appRoutes(app: FastifyInstance) {
@@ -23,4 +24,5 @@ export async function appRoutes(app: FastifyInstance) {
 	app.get('/orders', listOrders)
 	app.put('/orders/:id', orderUpdate)
 	app.get('/orders/:id', orderProfile)
+	app.delete('/orders/:id', orderDelete)
 }   
