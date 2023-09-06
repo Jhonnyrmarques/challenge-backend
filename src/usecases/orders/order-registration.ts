@@ -1,4 +1,4 @@
-import { OrdersRepository } from '../repositories/orders-repository'
+import { OrdersRepository } from '../../repositories/orders-repository'
 
 interface IRequest {
   description: string
