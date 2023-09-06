@@ -3,9 +3,10 @@ import { z } from 'zod'
 
 import { PrismaOrdersRepository } from '../../repositories/prisma/prisma-orders-repository'
 
-import { OrderUpdateUseCase } from '../../usecases/order-update'
+import { OrderUpdateUseCase } from '../../usecases/orders/order-update'
 
 import { NotFoundError } from '../../usecases/errors/not-found-error'
+
 
 
 export async function orderUpdate(request: FastifyRequest, reply: FastifyReply) {
