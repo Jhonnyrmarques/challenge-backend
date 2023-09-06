@@ -1,8 +1,10 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { InMemoryOrdersRepository } from '../repositories/in-memory/in-memory-orders-repository'
+import { InMemoryOrdersRepository } from '../../repositories/in-memory/in-memory-orders-repository'
+
 import { OrderUpdateUseCase } from './order-update'
 import { OrdersRegistrationUseCase } from './order-registration'
+
 
 let ordersRepository: InMemoryOrdersRepository
 let ordersUpdate: OrderUpdateUseCase
