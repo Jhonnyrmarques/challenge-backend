@@ -1,12 +1,10 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
-import { PrismaOrdersRepository } from '../../repositories/prisma/prisma-orders-repository'
+import { PrismaOrdersRepository } from '../../../repositories/prisma/prisma-orders-repository'
+import { OrderUpdateUseCase } from '../../../usecases/orders/order-update'
 
-import { OrderUpdateUseCase } from '../../usecases/orders/order-update'
-
-import { NotFoundError } from '../../usecases/errors/not-found-error'
-
+import { NotFoundError } from '../../../usecases/errors/not-found-error'
 
 
 export async function orderUpdate(request: FastifyRequest, reply: FastifyReply) {
