@@ -1,18 +1,18 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import { InMemoryUsersRepository } from '../../repositories/in-memory/in-memory-users-repository'
-import { UserProfileUseCase } from './user-profile'
+import { ShowUserUseCase } from './show-user'
 
 import { NotFoundError } from '../errors/not-found-error'
 
 
 let usersRepository: InMemoryUsersRepository
-let userProfile: UserProfileUseCase
+let userProfile: ShowUserUseCase
 
 describe('Get User Profile', () => {
 	beforeEach(() => {
 		usersRepository = new InMemoryUsersRepository()
-		userProfile = new UserProfileUseCase(usersRepository)
+		userProfile = new ShowUserUseCase(usersRepository)
 	})
 
 
