@@ -52,5 +52,9 @@ export class InMemoryOrdersRepository implements OrdersRepository {
 
 		return order
 	}
+
+	async listAllOrders(){
+		return this.orders
+	}
   
 }
