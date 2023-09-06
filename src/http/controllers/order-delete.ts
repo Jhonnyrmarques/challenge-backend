@@ -2,9 +2,10 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
 import { PrismaOrdersRepository } from '../../repositories/prisma/prisma-orders-repository'
-import { OrderDeleteUseCase } from '../../usecases/order-delete'
+
 
 import { NotFoundError } from '../../usecases/errors/not-found-error'
+import { OrderDeleteUseCase } from '../../usecases/orders/order-delete'
 
 
 export async function orderDelete(request: FastifyRequest, reply: FastifyReply) {
