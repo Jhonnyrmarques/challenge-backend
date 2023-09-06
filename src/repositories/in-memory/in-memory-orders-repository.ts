@@ -42,5 +42,15 @@ export class InMemoryOrdersRepository implements OrdersRepository {
 			}
 		}
 	}
+
+	async findById(id: string) {
+		const order = this.orders.find(order => order.id === id)
+
+		if(!order) {
+			return null
+		}
+
+		return order
+	}
   
 }
