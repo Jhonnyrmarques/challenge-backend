@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 import { PrismaUsersRepository } from '../../repositories/prisma/prisma-users-repository'
 
-import { UserUpdateUseCase } from '../../usecases/user-update'
+import { UserUpdateUseCase } from '../../usecases/users/user-update'
 
 import { NotFoundError } from '../../usecases/errors/not-found-error'
 

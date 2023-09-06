@@ -1,8 +1,9 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { InMemoryUsersRepository } from '../repositories/in-memory/in-memory-users-repository'
+import { InMemoryUsersRepository } from '../../repositories/in-memory/in-memory-users-repository'
 import { UserProfileUseCase } from './user-profile'
-import { NotFoundError } from './errors/not-found-error'
+
+import { NotFoundError } from '../errors/not-found-error'
 
 
 let usersRepository: InMemoryUsersRepository

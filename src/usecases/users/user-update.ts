@@ -1,5 +1,6 @@
-import { UsersRepository } from '../repositories/users-repository'
-import { NotFoundError } from './errors/not-found-error'
+import { UsersRepository } from '../../repositories/users-repository'
+import { NotFoundError } from '../errors/not-found-error'
+
 
 interface IRequest {
   userId: string

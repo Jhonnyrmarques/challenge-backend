@@ -1,26 +1,26 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { UserDeleteUseCase } from './user-delete'
 
-import { InMemoryUsersRepository } from '../repositories/in-memory/in-memory-users-repository'
-
+import { UserUpdateUseCase } from './user-update'
 import { UserRegistrationUseCase } from './user-registration'
 
-import { NotFoundError } from './errors/not-found-error'
+import { InMemoryUsersRepository } from '../../repositories/in-memory/in-memory-users-repository'
+import { NotFoundError } from '../errors/not-found-error'
+
 
 
 let usersRepository: InMemoryUsersRepository
-let userDelete: UserDeleteUseCase
+let userUpdate: UserUpdateUseCase
 let userRegistration: UserRegistrationUseCase
 
-describe('Delete User', () => {
+describe('User Update', () => {
 	beforeEach(() => {
 		usersRepository = new InMemoryUsersRepository()
-		userDelete = new UserDeleteUseCase(usersRepository)
+		userUpdate = new UserUpdateUseCase(usersRepository)
 		userRegistration = new UserRegistrationUseCase(usersRepository)
 	})
 
-	it('should be possible to delete a user', async () => {
+	it('should be possible to update a user profile', async () => {
 		const { user } = await userRegistration.execute({
 			first_name: 'Jonh',
 			last_name: 'Doe',
@@ -30,20 +30,20 @@ describe('Delete User', () => {
 			phone_number: '92986411974'
 		})
 
-		const deleted =	await userDelete.execute({userId: user.id})
-   
-		expect(deleted).toBe(undefined)
+		await userUpdate.execute({userId: user.id, first_name: 'Luíz'})
 
+		expect(user.first_name).toEqual('Luíz')
 		
 	})
 
-	it('should not be possible to delete a user with non-existent id', async () => {
+	it('should not be possible to update a user with non-existent id', async () => {
 		await	expect(() => 
-			userDelete.execute({
+			userUpdate.execute({
 				userId: 'invalid-id', 
-				
+				first_name: 'Luíz'
 			})
 		).rejects.toBeInstanceOf(NotFoundError)
 
+		
 	})
 })

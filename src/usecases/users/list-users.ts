@@ -1,4 +1,4 @@
-import { UsersRepository } from '../repositories/users-repository'
+import { UsersRepository } from '../../repositories/users-repository'
 
 export class ListUsersUseCase {
 	constructor(private usersRepository: UsersRepository) {}

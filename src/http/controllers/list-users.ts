@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 
 import { PrismaUsersRepository } from '../../repositories/prisma/prisma-users-repository'
 
-import { ListUsersUseCase } from '../../usecases/list-users'
+import { ListUsersUseCase } from '../../usecases/users/list-users'
 
 
 export async function listUsers(request: FastifyRequest, reply: FastifyReply) {

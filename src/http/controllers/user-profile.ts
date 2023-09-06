@@ -1,7 +1,9 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
-import { UserProfileUseCase } from '../../usecases/user-profile'
+
 import { PrismaUsersRepository } from '../../repositories/prisma/prisma-users-repository'
+import { UserProfileUseCase } from '../../usecases/users/user-profile'
+
 import { NotFoundError } from '../../usecases/errors/not-found-error'
 
 

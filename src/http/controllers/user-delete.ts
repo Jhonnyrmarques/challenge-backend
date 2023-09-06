@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 import { PrismaUsersRepository } from '../../repositories/prisma/prisma-users-repository'
 
-import { UserDeleteUseCase } from '../../usecases/user-delete'
+import { UserDeleteUseCase } from '../../usecases/users/user-delete'
 
 import { NotFoundError } from '../../usecases/errors/not-found-error'
 
