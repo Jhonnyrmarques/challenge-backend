@@ -1,6 +1,8 @@
 import { compare } from 'bcryptjs'
-import { UsersRepository } from '../repositories/users-repository'
-import { InvalidCredentialError } from './errors/invalid-credential-error'
+
+import { UsersRepository } from '../../repositories/users-repository'
+import { InvalidCredentialError } from '../errors/invalid-credential-error'
+
 
 interface IRequest {
   email: string
