@@ -6,11 +6,23 @@ import { orderRegistration } from './order-registration'
 import { orderUpdate } from './order-update'
 import { showOrder } from './show-order'
 
+import { 
+	createOrderSchema, 
+	deleteOrderSchema, 
+	getOrdersSchema, 
+	showOrderSchema, 
+	updateOrderSchema 
+} 
+	from '../../schemas/orders-schema'
+import { verifyJWT } from '../../middlewares/verify-jwt'
+
 export async function ordersRoutes(app: FastifyInstance) {
-	app.post('/orders', orderRegistration)
-	app.get('/orders', listOrders)
-	app.put('/orders/:id', orderUpdate)
-	app.get('/orders/:id', showOrder)
-	app.delete('/orders/:id', orderDelete)
+	app.addHook('onRequest', verifyJWT)
+	
+	app.post('/orders', {schema: createOrderSchema}, orderRegistration)
+	app.get('/orders', {schema: getOrdersSchema}, listOrders)
+	app.put('/orders/:id', {schema: updateOrderSchema}, orderUpdate)
+	app.get('/orders/:id', {schema: showOrderSchema}, showOrder)
+	app.delete('/orders/:id', {schema: deleteOrderSchema}, orderDelete)
 
 }   
